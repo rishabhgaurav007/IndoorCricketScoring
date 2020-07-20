@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Matches</title>
+		<link rel="stylesheet" href="{% static 'styles.css' %}">
+	</head>
+
+    <body>
+    <div>
+            {% for player in players %}
+
+                <div class="card-container">
+                <a href="{% url 'show' pk=player.pk %}">
+                    <span class="pro">Pro</span>
+
+                    <h3>{{ player.first_name }} {{ player.last_name }}</h3>
+                    <p>Right Hand Batsmen and Right Hand Bowler</p>
+                    <div class="skills">
+                        <h6>Stats</h6>
+                        <ul>
+                            <li>Matches- {{ player.matches }}</li>
+                            <li>Runs- {{ player.runs }}</li>
+                            <li>50s- {{ player.fifties }}</li>
+                            <li>100s- {{ player.hundreds }}</li>
+                            <li>Avg- {{ player.average }}</li>
+                            <li>Wkt- {{ player.wickets }}</li>
+                            <li>NOs-{{ player.notouts }}</li>
+                        </ul>
+                    </div>
+                     </a>
+                </div>
+
+                <hr>
+            {% endfor %}
+
+    <div>
+
+    <br><br>
+        <a href="{% url 'score' %}"><button>Each Scores</button></a>
+    </body>
+</html>
+

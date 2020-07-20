@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Update</title>
+		<link rel="stylesheet" href="{% static 'styles.css' %}">
+	</head>
+
+    <body>
+        <div class="card-container">
+                    <span class="pro">Pro</span>
+
+                    <h3>{{ curr.first_name }} {{ curr.last_name }}</h3>
+                    <p>Right Hand Batsmen and Right Hand Bowler</p>
+                    <div class="skills">
+                        <h6>Stats</h6>
+                        <ul>
+                            <li>Matches- {{ curr.matches }}</li>
+                            <li>Runs- {{ curr.runs }}</li>
+                            <li>50s- {{ curr.fifties }}</li>
+                            <li>100s- {{ curr.hundreds }}</li>
+                            <li>Avg- {{ curr.average }}</li>
+                            <li>Wkt- {{ curr.wickets }}</li>
+                        </ul>
+                    </div>
+                    <div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        RUNS :<br> {{ form.run }}
+                        <br><br>
+                        Select Bowler:<br/><br/>
+                        {{ form.bowler }}<br><br>
+                        Key:<br><br>
+                        {{ form.crypto }}
+                        <br>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+                </div>
+
+
+    </body>
+</html>
