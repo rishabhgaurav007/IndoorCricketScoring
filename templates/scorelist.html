@@ -11,7 +11,7 @@
     <br>
     <br>
         <a href="{% url 'home' %}"><button>CLICK ME FOR HOME PAGE</button></a><br>
-        <br><hr>
+        <br>
         <tl>
             {% if obj %}
             {% for i in obj %}
@@ -23,7 +23,8 @@
                         <input type="submit" value="Undo">
                     </form>
                 </ol>
-                <hr>
+                <br>
+
 
             {% endfor %}
             {% endif %}
