@@ -15,7 +15,7 @@
         <tl>
             {% if obj %}
             {% for i in obj %}
-                <ol><p>ID:{{ i.id }}--- &nbsp;{{ i.nameofbatsmen }}&nbsp;{{ i.runscored }}&nbsp;{{ i.nameofbowler }}</p>
+                <ol><p style="color: red">ID:{{ i.id }}--- &nbsp;{{ i.nameofbatsmen }}&nbsp;{{ i.runscored }}&nbsp;{{ i.nameofbowler }}</p>
                     <form method="POST">
                         {% csrf_token %}
                         Enter Key: {{ form.crypto }}&nbsp;

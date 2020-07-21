@@ -33,7 +33,7 @@ body {
 
 h3 {
     margin: 10px 0;
-	background-color: #494949;
+	background-color: #7cff3f;
 }
 
 h6 {
@@ -475,7 +475,7 @@ button.primary.ghost {
 }
 
 .skills {
-    background-color: #1f1a36;
+    background-color: #84cf0b;
     text-align: left;
     padding: 15px;
     margin-top: 30px;
@@ -484,7 +484,7 @@ button.primary.ghost {
 .skills ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 .skills ul li {
