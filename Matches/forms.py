@@ -1,11 +1,11 @@
 from django import forms
 
 PLAYER = [
-    ('0','NotOut'),
+    ('0','***'),
     ('1', 'Nikhil'),
     ('2', 'Ronit'),
-    ('3', 'Any'),
-    ('4', 'Mithi'),
+    ('3', 'Adarsh'),
+    ('4', 'Rohan'),
     ('5', 'Ratn'),
     ('6', 'Sarthak'),
     ('7', 'Kaju'),
@@ -20,3 +20,7 @@ class UserForm(forms.Form):
     run = forms.IntegerField(label="run")
     bowler=forms.CharField(label="Bowler", widget = forms.Select(choices=PLAYER))
     crypto=forms.CharField(label="crypto")
+
+class ScoreUndo(forms.Form):
+    scorepk = forms.IntegerField(label="scorepk")
+    crypto = forms.CharField(label="crypto")

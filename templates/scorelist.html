@@ -8,11 +8,26 @@
 		<link rel="stylesheet" href="{% static 'styles.css' %}">
 	</head>
     <body>
+    <br>
+    <br>
+        <a href="{% url 'home' %}"><button>CLICK ME FOR HOME PAGE</button></a><br>
+        <br>
         <tl>
+            {% if obj %}
             {% for i in obj %}
-                <ol>{{ i.id }} &nbsp;{{ i.nameofbatsmen }}&nbsp;{{ i.runscored }}&nbsp;{{ i.nameofbowler }}</ol>
+                <ol><p>ID:{{ i.id }}--- &nbsp;{{ i.nameofbatsmen }}&nbsp;{{ i.runscored }}&nbsp;{{ i.nameofbowler }}</p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        Enter Key: {{ form.crypto }}&nbsp;
+                        ID : {{ form.scorepk }}&nbsp;
+                        <input type="submit" value="Undo">
+                    </form>
+                </ol>
+
             {% endfor %}
+            {% endif %}
         </tl>
+
 
     </body>
 </html>

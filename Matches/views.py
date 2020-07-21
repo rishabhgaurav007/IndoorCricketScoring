@@ -1,6 +1,6 @@
 from .models import Player, Score
 from django.shortcuts import render, get_object_or_404,HttpResponseRedirect
-from .forms import UserForm
+from .forms import UserForm,ScoreUndo
 
 # Create your views here.
 
@@ -58,6 +58,34 @@ def show(request,pk):
     return render(request, 'show.html', context)
 
 def score(request):
+    if request.method == 'POST':
+        form = ScoreUndo(request.POST)
+        if form.is_valid():
+            currcrypt = (int)(form.data.get('crypto'))
+            scorepk = (int)(form.data.get('scorepk'))
+
+            if currcrypt == 99:
+                upd = Score.objects.get(pk=scorepk)
+                batsmen = Player.objects.get(pk=upd.scoredby)
+                batsmen.runs = batsmen.runs - upd.runscored
+                if upd.runscored>=100:
+                    batsmen.hundreds=batsmen.hundreds-1
+                elif upd.runscored>=50:
+                    batsmen.fifties=batsmen.fifties-1
+                batsmen.matches = batsmen.matches -1
+                if upd.wicketby == 0:
+                    batsmen.notouts = batsmen.notouts -1
+                else:
+                    bowler = Player.objects.get(pk=upd.wicketby)
+                    bowler.wickets = bowler.wickets-1
+                    bowler.save()
+                batsmen.save()
+                upd.delete()
+        return HttpResponseRedirect('/')
+    else:
+        form = ScoreUndo()
     obj = Score.objects.all().order_by('-pk')
-    return render(request,'scorelist.html',{'obj':obj})
+
+    context = {'obj':obj,'form':form}
+    return render(request,'scorelist.html',context)
 
