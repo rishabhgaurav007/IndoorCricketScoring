@@ -29,4 +29,4 @@ class Score(models.Model):
     nameofbowler = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.runscored+" "+self.nameofbatsmen+" "+self.nameofbowler
+        return str(self.runscored)+" "+self.nameofbatsmen+" "+self.nameofbowler
