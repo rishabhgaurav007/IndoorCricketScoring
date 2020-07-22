@@ -11,7 +11,7 @@ def index(request):
 
 def show(request,pk):
     curr = get_object_or_404(Player, pk=pk)
-    players = Player.objects.all().order_by('-matches')
+    players = Player.objects.all().order_by('-matches','-runs')
     context = {'players' : players, 'curr' : curr}
 
     if request.method == 'POST':

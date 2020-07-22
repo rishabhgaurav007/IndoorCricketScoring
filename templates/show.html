@@ -13,18 +13,6 @@
                     <span class="pro">Pro</span>
 
                     <h3>{{ curr.first_name }} {{ curr.last_name }}</h3>
-                    <div class="skills">
-                        <h6>Stats</h6>
-                        <ul>
-                            <li style="color: #ecedf3" ><p>Matches- {{ player.matches }}</p></li>
-                            <li style="color: #ecedf3"><p>Runs- {{ player.runs }}</p></li>
-                            <li style="color: #ecedf3"><p>50s- {{ player.fifties }}</p></li>
-                            <li style="color: #ecedf3"><p>100s- {{ player.hundreds }}</p></li>
-                            <li style="color: #ecedf3"><p>Avg- {{ player.average }}</p></li>
-                            <li style="color: #ecedf3"><p>Wkt- {{ player.wickets }}</p></li>
-                            <li style="color: #ecedf3"><p>NOs-{{ player.notouts }}</p></li>
-                        </ul>
-                    </div>
                     <div>
                     <form method="POST">
                         {% csrf_token %}
