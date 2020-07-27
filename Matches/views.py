@@ -5,7 +5,7 @@ from .forms import UserForm,ScoreUndo
 # Create your views here.
 
 def index(request):
-    players = Player.objects.all().order_by('-matches')
+    players = Player.objects.all().order_by('-matches','-runs')
     context = {'players':players}
     return render(request,'index.html',context)
 

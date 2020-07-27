@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
+import subprocess
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,7 +28,7 @@ SECRET_KEY = 'y3p&1hxfi$_)us-v@m$t6tmm5sa0f^px5@f44c3!%#tcxy8@pu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*', 'chandelniwas.herokuapp.com']
+ALLOWED_HOSTS = ['*', '.herokuapp.com']
 
 
 # Application definition
@@ -78,13 +79,17 @@ WSGI_APPLICATION = 'Cricket.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'rishabhrg',
+        'USER': 'rishabh',
+        'PASSWORD': 'rishabh',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
 #added this for heroku
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
